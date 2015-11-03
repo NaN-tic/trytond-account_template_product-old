@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!-- The COPYRIGHT file at the top level of this repository contains the full
+     copyright notices and license terms. -->
+<data>
+    <xpath expr="/form/notebook" position="inside">
+        <page string="Taxes" id="taxes">
+            <label name="customer_tax_rule_template"/>
+            <field name="customer_tax_rule_template"/>
+            <label name="supplier_tax_rule_template"/>
+            <field name="supplier_tax_rule_template"/>
+        </page>
+    </xpath>
+</data>

@@ -1,0 +1,207 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:company.company,customer_tax_rule_template:"
+msgid "Customer Tax Rule"
+msgstr "Regla de impuesto de cliente"
+
+msgctxt "field:company.company,supplier_tax_rule_template:"
+msgid "Supplier Tax Rule"
+msgstr "Regla de impuesto de proveedor"
+
+msgctxt "field:product.category,account_template_expense:"
+msgid "Account Template Expense"
+msgstr "Plantilla de cuenta de gastos"
+
+msgctxt "field:product.category,account_template_revenue:"
+msgid "Account Template Revenue"
+msgstr "Plantilla de cuenta de ingresos"
+
+msgctxt "field:product.category,customer_template_taxes:"
+msgid "Customer Template Taxes"
+msgstr "Plantillas de impuestos de cliente"
+
+msgctxt "field:product.category,supplier_template_taxes:"
+msgid "Supplier Template Taxes"
+msgstr "Plantillas de impuestos de proveedor"
+
+msgctxt "field:product.category-customer-account.tax.template,create_date:"
+msgid "Create Date"
+msgstr "Fecha de creación"
+
+msgctxt "field:product.category-customer-account.tax.template,create_uid:"
+msgid "Create User"
+msgstr "Usuario de creación"
+
+msgctxt "field:product.category-customer-account.tax.template,id:"
+msgid "ID"
+msgstr "Identificador"
+
+msgctxt "field:product.category-customer-account.tax.template,product:"
+msgid "Product Category"
+msgstr "Categoría de producto"
+
+msgctxt "field:product.category-customer-account.tax.template,rec_name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:product.category-customer-account.tax.template,tax:"
+msgid "Tax Template"
+msgstr "Plantilla de impuesto"
+
+msgctxt "field:product.category-customer-account.tax.template,write_date:"
+msgid "Write Date"
+msgstr "Fecha modificación"
+
+msgctxt "field:product.category-customer-account.tax.template,write_uid:"
+msgid "Write User"
+msgstr "Usuario modificación"
+
+msgctxt "field:product.category-supplier-account.tax.template,create_date:"
+msgid "Create Date"
+msgstr "Fecha de creación"
+
+msgctxt "field:product.category-supplier-account.tax.template,create_uid:"
+msgid "Create User"
+msgstr "Usuario de creación"
+
+msgctxt "field:product.category-supplier-account.tax.template,id:"
+msgid "ID"
+msgstr "Identificador"
+
+msgctxt "field:product.category-supplier-account.tax.template,product:"
+msgid "Product Category"
+msgstr "Categoría de producto"
+
+msgctxt "field:product.category-supplier-account.tax.template,rec_name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:product.category-supplier-account.tax.template,tax:"
+msgid "Tax Template"
+msgstr "Plantilla de impuesto"
+
+msgctxt "field:product.category-supplier-account.tax.template,write_date:"
+msgid "Write Date"
+msgstr "Fecha modificación"
+
+msgctxt "field:product.category-supplier-account.tax.template,write_uid:"
+msgid "Write User"
+msgstr "Usuario modificación"
+
+msgctxt "field:product.template,account_template_expense:"
+msgid "Account Template Expense"
+msgstr "Plantilla de cuenta de gastos"
+
+msgctxt "field:product.template,account_template_revenue:"
+msgid "Account Template Revenue"
+msgstr "Plantilla de cuenta de ingresos"
+
+msgctxt "field:product.template,customer_template_taxes:"
+msgid "Customer Template Taxes"
+msgstr "Plantillas de impuestos de cliente"
+
+msgctxt "field:product.template,supplier_template_taxes:"
+msgid "Supplier Template Taxes"
+msgstr "Plantillas de impuestos de proveedor"
+
+msgctxt "field:product.template-customer-account.tax.template,create_date:"
+msgid "Create Date"
+msgstr "Fecha de creación"
+
+msgctxt "field:product.template-customer-account.tax.template,create_uid:"
+msgid "Create User"
+msgstr "Usuario de creación"
+
+msgctxt "field:product.template-customer-account.tax.template,id:"
+msgid "ID"
+msgstr "Identificador"
+
+msgctxt "field:product.template-customer-account.tax.template,product:"
+msgid "Product Template"
+msgstr "Plantilla de producto"
+
+msgctxt "field:product.template-customer-account.tax.template,rec_name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:product.template-customer-account.tax.template,tax:"
+msgid "Tax Template"
+msgstr "Plantilla de impuesto"
+
+msgctxt "field:product.template-customer-account.tax.template,write_date:"
+msgid "Write Date"
+msgstr "Fecha modificación"
+
+msgctxt "field:product.template-customer-account.tax.template,write_uid:"
+msgid "Write User"
+msgstr "Usuario modificación"
+
+msgctxt "field:product.template-supplier-account.tax.template,create_date:"
+msgid "Create Date"
+msgstr "Fecha de creación"
+
+msgctxt "field:product.template-supplier-account.tax.template,create_uid:"
+msgid "Create User"
+msgstr "Usuario de creación"
+
+msgctxt "field:product.template-supplier-account.tax.template,id:"
+msgid "ID"
+msgstr "Identificador"
+
+msgctxt "field:product.template-supplier-account.tax.template,product:"
+msgid "Product Template"
+msgstr "Plantilla de producto"
+
+msgctxt "field:product.template-supplier-account.tax.template,rec_name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:product.template-supplier-account.tax.template,tax:"
+msgid "Tax Template"
+msgstr "Plantilla de impuesto"
+
+msgctxt "field:product.template-supplier-account.tax.template,write_date:"
+msgid "Write Date"
+msgstr "Fecha modificación"
+
+msgctxt "field:product.template-supplier-account.tax.template,write_uid:"
+msgid "Write User"
+msgstr "Usuario modificación"
+
+msgctxt "help:company.company,customer_tax_rule_template:"
+msgid ""
+"If defined it will be applied on the the customer template taxes defined on "
+"product template for this company"
+msgstr ""
+"Si se define se aplicará en las plantillas de impuestos de cliente definidas"
+" en la plantilla de producto al obtener el valor por esta empresa. "
+
+msgctxt "help:company.company,supplier_tax_rule_template:"
+msgid ""
+"If defined it will be applied on the the supplier template taxes defined on "
+"product template for this company"
+msgstr ""
+"Si se define se aplicará en las plantillas de impuestos de proveedor "
+"definidas en la plantilla de producto al obtener el valor por esta empresa. "
+
+msgctxt "model:product.category-customer-account.tax.template,name:"
+msgid "Product Category - Customer category Tax"
+msgstr "Categoria de producto - Plantillas de impuestos de cliente"
+
+msgctxt "model:product.category-supplier-account.tax.template,name:"
+msgid "Product Category - Supplier category Tax"
+msgstr "Categoria de producto - Plantillas de impuestos de proveedor"
+
+msgctxt "model:product.template-customer-account.tax.template,name:"
+msgid "Product Template - Customer Template Tax"
+msgstr "Plantia de producto - Plantilla d'impuesto de cliente"
+
+msgctxt "model:product.template-supplier-account.tax.template,name:"
+msgid "Product Template - Supplier Template Tax"
+msgstr "Plantia de producto - Plantilla d'impuesto de proveedor"
+
+msgctxt "view:company.company:"
+msgid "Taxes"
+msgstr "Impuestos"

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!-- The COPYRIGHT file at the top level of this repository contains the full
+     copyright notices and license terms. -->
+<data>
+    <xpath
+        expr="/form/notebook/page[@id='accounting']/field[@name='account_parent']"
+        position="after">
+            <newline/>
+            <label name="account_template_revenue"/>
+            <field name="account_template_revenue"/>
+            <label name="account_template_expense"/>
+            <field name="account_template_expense"/>
+    </xpath>
+    <xpath
+        expr="/form/notebook/page[@id='accounting']/field[@name='taxes_parent']"
+        position="after">
+            <newline/>
+            <field name="customer_template_taxes" colspan="2"/>
+            <field name="supplier_template_taxes" colspan="2"/>
+    </xpath>
+</data>
