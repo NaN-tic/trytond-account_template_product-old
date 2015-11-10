@@ -228,6 +228,16 @@ class Template:
                 if old_invisible:
                     invisible |= old_invisible
                 field.states['invisible'] = invisible
+                required = field.states.get('required')
+                if required:
+                    field.states['required'] = (~Bool(Eval(target_name))
+                        & required)
+                    # Copy required from source field
+                    target_field = getattr(cls, target_name)
+                    target_field.states['required'] = (~Bool(Eval(source_name))
+                        & required)
+                    target_field.depends = list(set(field.depends) |
+                        set(target_field.depends))
                 field.depends.append(target_name)
 
     def get_account(self, name):
