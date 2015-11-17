@@ -81,7 +81,7 @@ class Category:
         Company = pool.get('company.company')
         account = super(Category, self).get_account(name)
         template_name = 'account_template_%s' % name[:-5].split('_')[-1]
-        if not self.account_parent:
+        if not self.account_parent and hasattr(self, template_name):
             template = getattr(self, template_name)
             company = Transaction().context.get('company')
             if template and company:
@@ -95,7 +95,7 @@ class Category:
         taxes = super(Category, self).get_taxes(name)
         tax_type = name.split('_')[0]
         template_name = '%s_template_taxes' % tax_type
-        if not self.taxes_parent:
+        if not self.taxes_parent and hasattr(self, template_name):
             tax_templates = getattr(self, template_name)
             company = Transaction().context.get('company')
             if tax_templates and company:
@@ -245,7 +245,7 @@ class Template:
         Company = pool.get('company.company')
         account = super(Template, self).get_account(name)
         template_name = 'account_template_%s' % name[:-5].split('_')[-1]
-        if not self.account_category:
+        if not self.account_category and hasattr(self, template_name):wq:
             template = getattr(self, template_name)
             company = Transaction().context.get('company')
             if template and company:
@@ -259,7 +259,7 @@ class Template:
         taxes = super(Template, self).get_taxes(name)
         tax_type = name.split('_')[0]
         template_name = '%s_template_taxes' % tax_type
-        if not self.taxes_category:
+        if not self.taxes_category and hasattr(self, template_name):
             tax_templates = getattr(self, template_name)
             company = Transaction().context.get('company')
             if tax_templates and company:
