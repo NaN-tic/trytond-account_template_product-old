@@ -245,7 +245,7 @@ class Template:
         Company = pool.get('company.company')
         account = super(Template, self).get_account(name)
         template_name = 'account_template_%s' % name[:-5].split('_')[-1]
-        if not self.account_category and hasattr(self, template_name):wq:
+        if not self.account_category and hasattr(self, template_name):
             template = getattr(self, template_name)
             company = Transaction().context.get('company')
             if template and company:
