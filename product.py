@@ -117,15 +117,6 @@ class Category:
                             taxes.append(tax.id)
         return taxes
 
-    @fields.depends('account_parent', 'account_category_expense')
-    def on_change_account_parent_expense(self):
-        if not self.account_parent:
-            supplier_taxes = []
-            if self.account_parent_expense:
-                supplier_taxes.extend(
-                    tax.id for tax in self.account_parent_expense.taxes)
-            self.supplier_category_taxes = supplier_taxes
-
     @fields.depends('account_parent', 'account_template_revenue')
     def on_change_account_revenue(self):
         if not self.account_parent:
