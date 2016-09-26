@@ -4,12 +4,11 @@ from trytond.model import fields
 from trytond.pool import PoolMeta
 
 __all__ = ['Company']
-__metaclass__ = PoolMeta
 
 
 class Company:
+    __metaclass__ = PoolMeta
     __name__ = 'company.company'
-
     customer_tax_rule_template = fields.Many2One('account.tax.rule.template',
         'Customer Tax Rule',
         help=('If defined it will be applied on the the customer template '
