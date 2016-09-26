@@ -7,10 +7,10 @@ from trytond.pool import Pool, PoolMeta
 
 __all__ = ['Category', 'CategoryCustomerTax', 'CategorySupplierTax',
     'Template', 'TemplateCustomerTax', 'TemplateSupplierTax']
-__metaclass__ = PoolMeta
 
 
 class Category:
+    __metaclass__ = PoolMeta
     __name__ = 'product.category'
     account_template_expense = fields.Many2One('account.account.template',
         'Account Template Expense',
@@ -148,6 +148,7 @@ class CategorySupplierTax(ModelSQL):
 
 
 class Template:
+    __metaclass__ = PoolMeta
     __name__ = 'product.template'
     account_template_expense = fields.Many2One('account.account.template',
         'Account Template Expense',
