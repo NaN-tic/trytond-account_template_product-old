@@ -8,7 +8,9 @@ import ConfigParser
 
 MODULE = 'account_template_product'
 PREFIX = 'nantic'
-MODULE2PREFIX = {}
+MODULE2PREFIX = {
+    'nantic': 'company_account_sync'
+}
 
 
 def read(fname):
