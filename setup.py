@@ -9,7 +9,7 @@ import ConfigParser
 MODULE = 'account_template_product'
 PREFIX = 'nantic'
 MODULE2PREFIX = {
-    'nantic': 'company_account_sync'
+    'company_account_sync': 'nantic'
 }
 
 
