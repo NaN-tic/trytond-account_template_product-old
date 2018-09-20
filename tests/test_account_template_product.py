@@ -137,21 +137,23 @@ class TestCase(ModuleTestCase):
             create_chart(company1)
             self.syncronize()
 
+        Account = pool.get('account.account')
+        Tax = pool.get('account.tax')
         for company in Company.search([]):
             with set_company(company):
                 template = ProductTemplate(template)
-                self.assertEqual(template.account_expense_used.template,
+                self.assertEqual(Account(template.account_expense_used).template,
                     account_expense)
                 tax_used, = template.customer_taxes_used
-                self.assertEqual(tax_used.template, tax)
+                self.assertEqual(Tax(tax_used).template, tax)
 
         for company in Company.search([]):
             with set_company(company):
                 template = ProductTemplate(template)
-                self.assertEqual(template.account_expense_used.template,
+                self.assertEqual(Account(template.account_expense_used).template,
                     account_expense)
                 tax_used, = template.customer_taxes_used
-                self.assertEqual(tax_used.template, tax)
+                self.assertEqual(Tax(tax_used).template, tax)
 
         # Define a tax rule on company to change it's taxes
         company1.customer_tax_rule_template = tax_rule
@@ -159,7 +161,7 @@ class TestCase(ModuleTestCase):
         with set_company(company1):
             template = ProductTemplate(template)
             tax_used, = template.customer_taxes_used
-            self.assertEqual(tax_used.template, new_tax)
+            self.assertEqual(Tax(tax_used).template, new_tax)
 
 
 def suite():
