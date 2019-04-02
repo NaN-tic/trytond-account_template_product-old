@@ -6,8 +6,7 @@ from trytond.pool import PoolMeta
 __all__ = ['Company']
 
 
-class Company:
-    __metaclass__ = PoolMeta
+class Company(metaclass=PoolMeta):
     __name__ = 'company.company'
     customer_tax_rule_template = fields.Many2One('account.tax.rule.template',
         'Customer Tax Rule',

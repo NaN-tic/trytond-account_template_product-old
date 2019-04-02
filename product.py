@@ -9,8 +9,7 @@ __all__ = ['Category', 'CategoryCustomerTax', 'CategorySupplierTax',
     'Template', 'TemplateCustomerTax', 'TemplateSupplierTax']
 
 
-class Category:
-    __metaclass__ = PoolMeta
+class Category(metaclass=PoolMeta):
     __name__ = 'product.category'
     account_template_expense = fields.Many2One('account.account.template',
         'Account Template Expense',
@@ -147,8 +146,7 @@ class CategorySupplierTax(ModelSQL):
             required=True, select=True)
 
 
-class Template:
-    __metaclass__ = PoolMeta
+class Template(metaclass=PoolMeta):
     __name__ = 'product.template'
     account_template_expense = fields.Many2One('account.account.template',
         'Account Template Expense',
