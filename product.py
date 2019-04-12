@@ -1,7 +1,7 @@
 # The COPYRIGHT file at the top level of this repository contains the fulli
 # copyright notices and license terms.
 from trytond.model import ModelSQL, fields
-from trytond.pyson import Eval, Bool
+from trytond.pyson import Eval, Bool, Not
 from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
 
@@ -14,19 +14,19 @@ class Category(metaclass=PoolMeta):
     account_template_expense = fields.Many2One('account.account.template',
         'Account Template Expense',
         domain=[
-            ('kind', '=', 'expense'),
+            ('type.expense', '=', True),
             ],
         states={
-            'invisible': Eval('account_parent', False),
+            'invisible': Eval('accounts_category', False),
             },
         depends=['account_parent'])
     account_template_revenue = fields.Many2One('account.account.template',
         'Account Template Revenue',
         domain=[
-            ('kind', '=', 'revenue'),
+            ('type.revenue', '=', True),
             ],
         states={
-            'invisible': Eval('account_parent', False),
+            'invisible': Eval('accounts_category', False),
             },
         depends=['account_parent'])
     customer_template_taxes = fields.Many2Many(
@@ -151,21 +151,21 @@ class Template(metaclass=PoolMeta):
     account_template_expense = fields.Many2One('account.account.template',
         'Account Template Expense',
         domain=[
-            ('kind', '=', 'expense'),
+            ('type.expense', '=', True),
             ],
         states={
-            'invisible': Eval('account_category', False),
+            'invisible': Eval('accounts_category', False),
             },
-        depends=['account_category'])
+        depends=['accounts_category'])
     account_template_revenue = fields.Many2One('account.account.template',
         'Account Template Revenue',
         domain=[
-            ('kind', '=', 'revenue'),
+            ('type.revenue', '=', True),
             ],
         states={
-            'invisible': Eval('account_category', False),
+            'invisible': Eval('accounts_category', False),
             },
-        depends=['account_category'])
+        depends=['accounts_category'])
     customer_template_taxes = fields.Many2Many(
         'product.template-customer-account.tax.template',
         'product', 'tax', 'Customer Template Taxes',
@@ -225,14 +225,15 @@ class Template(metaclass=PoolMeta):
     def get_account(self, name):
         pool = Pool()
         Company = pool.get('company.company')
+        Account = pool.get('account.account')
         account = super(Template, self).get_account(name)
         template_name = 'account_template_%s' % name[:-5].split('_')[-1]
-        if not self.account_category and hasattr(self, template_name):
+        if not self.accounts_category and hasattr(self, template_name):
             template = getattr(self, template_name)
             company = Transaction().context.get('company')
             if template and company:
                 account = template.get_syncronized_company_value(
-                    Company(company)).id
+                    Company(company))
         return account
 
     def get_taxes(self, name):
