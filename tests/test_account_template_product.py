@@ -98,7 +98,7 @@ class TestCase(ModuleTestCase):
                 ('name', '=', 'Unit'),
                 ])
         account_expense, = AccountTemplate.search([
-                ('kind', '=', 'expense'),
+                ('type.expense', '=', True),
                 ('name', '=', 'Main Expense'),
                 ])
 

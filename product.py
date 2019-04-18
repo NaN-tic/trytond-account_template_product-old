@@ -85,7 +85,7 @@ class Category(metaclass=PoolMeta):
             company = Transaction().context.get('company')
             if template and company:
                 account = template.get_syncronized_company_value(
-                    Company(company)).id
+                    Company(company))
         return account
 
     def get_taxes(self, name):
