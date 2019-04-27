@@ -40,6 +40,7 @@ class TestCase(ModuleTestCase):
         Company = pool.get('company.company')
         Party = pool.get('party.party')
         Uom = pool.get('product.uom')
+        User = pool.get('res.user')
         AccountTemplate = pool.get('account.account.template')
         TaxTemplate = pool.get('account.tax.template')
         TaxCodeTemplate = pool.get('account.tax.code.template')
@@ -111,7 +112,6 @@ class TestCase(ModuleTestCase):
                     'name': 'test account used',
                     'default_uom': unit.id,
                     'list_price': Decimal(10),
-                    'cost_price': Decimal(3),
                     'account_template_expense': account_expense,
                     'customer_template_taxes': [('add', [tax])],
                     'accounts_category': True,
@@ -119,8 +119,19 @@ class TestCase(ModuleTestCase):
                     'account_category': category,
                     }])
 
+
+        # Create User Company
+        admin = User.search([('login', '=', 'admin')])
+
         # Create Company
         company = create_company()
+        user_company, = User.copy(admin)
+        user_company.login = company.party.name
+        user_company.main_company = company
+        user_company.company = company
+        user_company.save()
+        company.intercompany_user = user_company
+        company.save()
         with set_company(company):
             # Create Chart of Accounts
             create_chart(company)
@@ -131,7 +142,14 @@ class TestCase(ModuleTestCase):
             currency=company.currency,
             )
         company1.parent = company
+        user_company1, = User.copy(admin)
+        user_company.login = company1.party.name
+        user_company1.main_company = company1
+        user_company1.company = company1
+        user_company1.save()
+        company1.intercompany_user = user_company1
         company1.save()
+
         with set_company(company1):
             # Create Chart of Accounts
             create_chart(company1)
