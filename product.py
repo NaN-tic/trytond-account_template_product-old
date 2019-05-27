@@ -91,6 +91,8 @@ class Category(metaclass=PoolMeta):
     def get_taxes(self, name):
         pool = Pool()
         Company = pool.get('company.company')
+        Tax = pool.get('account.tax')
+
         taxes = super(Category, self).get_taxes(name)
         tax_type = name.split('_')[0]
         template_name = '%s_template_taxes' % tax_type
@@ -111,9 +113,9 @@ class Category(metaclass=PoolMeta):
                     tax = template.get_syncronized_company_value(company)
                     if tax:
                         if tax_rule:
-                            taxes.extend(tax_rule.apply(tax, {}))
+                            taxes.extend([Tax(x) for x in tax_rule.apply(tax, {})])
                         else:
-                            taxes.append(tax.id)
+                            taxes.append(tax)
         return taxes
 
     @fields.depends('account_parent', 'account_template_revenue')
@@ -239,6 +241,8 @@ class Template(metaclass=PoolMeta):
     def get_taxes(self, name):
         pool = Pool()
         Company = pool.get('company.company')
+        Tax = pool.get('account.tax')
+
         taxes = super(Template, self).get_taxes(name)
         tax_type = name.split('_')[0]
         template_name = '%s_template_taxes' % tax_type
@@ -259,9 +263,9 @@ class Template(metaclass=PoolMeta):
                     tax = template.get_syncronized_company_value(company)
                     if tax:
                         if tax_rule:
-                            taxes.extend(tax_rule.apply(tax, {}))
+                            taxes.extend([Tax(x) for x in tax_rule.apply(tax, {})])
                         else:
-                            taxes.append(tax.id)
+                            taxes.append(tax)
         return taxes
 
     @fields.depends('account_category', 'account_template_expense')
