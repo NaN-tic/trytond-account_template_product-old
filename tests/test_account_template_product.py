@@ -60,10 +60,6 @@ class TestCase(ModuleTestCase):
         tax_code.name = 'Tax Code'
         tax_code.account = account_template
         tax_code.save()
-        base_code = TaxCodeTemplate()
-        base_code.name = 'Base Code'
-        base_code.account = account_template
-        base_code.save()
         tax = TaxTemplate()
         tax.name = tax.description = '20% VAT'
         tax.type = 'percentage'
@@ -71,14 +67,6 @@ class TestCase(ModuleTestCase):
         tax.account = account_template
         tax.invoice_account = tax_account
         tax.credit_note_account = tax_account
-        tax.invoice_base_code = base_code
-        tax.invoice_base_sign = Decimal(1)
-        tax.invoice_tax_code = tax_code
-        tax.invoice_tax_sign = Decimal(1)
-        tax.credit_note_base_code = base_code
-        tax.credit_note_base_sign = Decimal(-1)
-        tax.credit_note_tax_code = tax_code
-        tax.credit_note_tax_sign = Decimal(-1)
         tax.save()
         new_tax, = TaxTemplate.copy([tax], {
                 'name': '10% VAT',
@@ -113,7 +101,6 @@ class TestCase(ModuleTestCase):
                     'default_uom': unit.id,
                     'list_price': Decimal(10),
                     'account_template_expense': account_expense,
-                    'customer_template_taxes': [('add', [tax])],
                     'accounts_category': True,
                     'taxes_category': True,
                     'account_category': category,
