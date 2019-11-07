@@ -284,7 +284,7 @@ class Template(metaclass=PoolMeta):
             if self.account_template_revenue:
                 customer_taxes.extend(
                     tax.id for tax in self.account_template_revenue.taxes)
-            self.customer_tempmlate_taxes = customer_taxes
+            self.customer_template_taxes = customer_taxes
 
 
 class TemplateCustomerTax(ModelSQL):
