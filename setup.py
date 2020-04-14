@@ -4,6 +4,7 @@
 from setuptools import setup
 import re
 import os
+import io
 from configparser import ConfigParser
 
 MODULE = 'account_template_product'
@@ -15,8 +16,11 @@ MODULE2PREFIX = {
 }
 
 
+
 def read(fname):
-    return open(os.path.join(os.path.dirname(__file__), fname)).read()
+    return io.open(
+        os.path.join(os.path.dirname(__file__), fname),
+        'r', encoding='utf-8').read()
 
 
 def get_require_version(name):
@@ -41,15 +45,45 @@ major_version = int(major_version)
 minor_version = int(minor_version)
 
 requires = []
+
 for dep in info.get('depends', []):
-    if not re.match(r'(ir|res|webdav)(\W|$)', dep):
+    if not re.match(r'(ir|res)(\W|$)', dep):
         prefix = MODULE2PREFIX.get(dep, 'trytond')
-        requires.append('%s_%s >= %s.%s, < %s.%s' %
-                (prefix, dep, major_version, minor_version,
-                major_version, minor_version + 1))
+        requires.append(get_require_version('%s_%s' % (prefix, dep)))
 requires.append(get_require_version('trytond'))
 
-tests_require = [get_require_version('proteus')]
+tests_require = [get_require_version('proteus'),
+    get_require_version('trytond_account_invoice'),
+    get_require_version('trytond_analytic_account'),
+    ]
+series = '%s.%s' % (major_version, minor_version)
+if minor_version % 2:
+    branch = 'master'
+else:
+    branch = series
+dependency_links = [
+    ('git+https://github.com/NaN-tic/'
+        'trytond-account_product_accounting@%(branch)s'
+        '#egg=nantic-account_product_accounting-%(series)s' % {
+            'branch': branch,
+            'series': series,
+            }),
+    ('git+https://github.com/NaN-tic/'
+        'trytond-company_account_sync@%(branch)s'
+        '#egg=nantic-company_account_sync-%(series)s' % {
+            'branch': branch,
+            'series': series,
+            }),
+    ('git+https://github.com/NaN-tic/'
+        'trytond-company_user@%(branch)s'
+        '#egg=nantic-company_user-%(series)s' % {
+            'branch': branch,
+            'series': series,
+            }),
+    ]
+if minor_version % 2:
+    # Add development index for testing with proteus
+    dependency_links.append('https://trydevpi.tryton.org/')
 
 setup(name='%s_%s' % (PREFIX, MODULE),
     version=version,
@@ -58,7 +92,7 @@ setup(name='%s_%s' % (PREFIX, MODULE),
     author='NaN·tic',
     author_email='info@nan-tic.com',
     url='http://www.nan-tic.com/',
-    download_url="https://bitbucket.org/nantic/trytond-%s" % MODULE,
+    download_url="https://github.com/NaN-tic/trytond-%s" % MODULE,
     package_dir={'trytond.modules.%s' % MODULE: '.'},
     packages=[
         'trytond.modules.%s' % MODULE,
@@ -92,6 +126,7 @@ setup(name='%s_%s' % (PREFIX, MODULE),
         ],
     license='GPL-3',
     install_requires=requires,
+    dependency_links=dependency_links,
     zip_safe=False,
     entry_points="""
     [trytond.modules]
